@@ -22,7 +22,7 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -66,9 +66,9 @@ class _MyAppState extends State<MyApp> {
           case TargetPlatform.macOS:
             deviceData = _readMacOsDeviceInfo(await deviceInfoPlugin.macOsInfo);
             break;
-          case TargetPlatform.ohos:
-            deviceData = (await deviceInfoOhosPlugin.ohosDeviceInfo).data;
-            break;
+          // case TargetPlatform.ohos:
+          //   deviceData = (await deviceInfoOhosPlugin.ohosDeviceInfo).data;
+          //   break;
           default:
             deviceData = <String, dynamic>{
               'Error:': '$defaultTargetPlatform isn\'t supported'
@@ -116,14 +116,14 @@ class _MyAppState extends State<MyApp> {
       'type': build.type,
       'isPhysicalDevice': build.isPhysicalDevice,
       'systemFeatures': build.systemFeatures,
-      'displaySizeInches':
-          ((build.displayMetrics.sizeInches * 10).roundToDouble() / 10),
-      'displayWidthPixels': build.displayMetrics.widthPx,
-      'displayWidthInches': build.displayMetrics.widthInches,
-      'displayHeightPixels': build.displayMetrics.heightPx,
-      'displayHeightInches': build.displayMetrics.heightInches,
-      'displayXDpi': build.displayMetrics.xDpi,
-      'displayYDpi': build.displayMetrics.yDpi,
+      // 'displaySizeInches':
+      //     ((build. displayMetrics.sizeInches * 10).roundToDouble() / 10),
+      // 'displayWidthPixels': build.displayMetrics.widthPx,
+      // 'displayWidthInches': build.displayMetrics.widthInches,
+      // 'displayHeightPixels': build.displayMetrics.heightPx,
+      // 'displayHeightInches': build.displayMetrics.heightInches,
+      // 'displayXDpi': build.displayMetrics.xDpi,
+      // 'displayYDpi': build.displayMetrics.yDpi,
       'serialNumber': build.serialNumber,
     };
   }
@@ -282,8 +282,8 @@ class _MyAppState extends State<MyApp> {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return 'Android Device Info';
-      case TargetPlatform.ohos:
-        return 'Ohos Device Info';
+      // case TargetPlatform.ohos:
+      //   return 'Ohos Device Info';
       case TargetPlatform.iOS:
         return 'iOS Device Info';
       case TargetPlatform.linux:
